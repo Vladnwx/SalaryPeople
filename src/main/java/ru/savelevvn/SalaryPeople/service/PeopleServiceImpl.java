@@ -2,11 +2,12 @@ package ru.savelevvn.SalaryPeople.service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.savelevvn.SalaryPeople.dao.PeopleDAO;
 import ru.savelevvn.SalaryPeople.entity.People;
 
 import java.util.List;
-
+@Service
 public class PeopleServiceImpl implements PeopleService {
 
     @Autowired
