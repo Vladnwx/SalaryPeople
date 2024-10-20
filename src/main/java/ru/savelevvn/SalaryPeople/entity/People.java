@@ -1,19 +1,19 @@
 package ru.savelevvn.SalaryPeople.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "People")
+@Table(name = "Peoples")
 public class People {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "name")
     private String name;
