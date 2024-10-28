@@ -20,6 +20,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/index}">Home</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
         </li>
         <li class="nav-item">
@@ -32,6 +35,9 @@
 <div class="container">
   <hr/>
   <a th:href="@{/addPeopleForm}" class="btn btn-primary">Add People</a>
+  <a th:href="@{/addPeopleFormFile}" class="btn btn-primary">Add People from File</a>
+  <a th:href="@{/addPeopleFormHTTP}" onclick="return false" class="btn btn-primary">Add People from HTTP</a>
+  <a th:href="@{/deleteAll}" class="btn btn-primary">delete All People</a>
   <br/><br/>
   <table class="table table-bordered table-striped" id="peopleTable">
     <thead>
@@ -40,6 +46,7 @@
       <th>Surname</th>
       <th>Sector</th>
       <th>Age</th>
+      <th>Salary</th>
     </tr>
     </thead>
     <tbody>
@@ -48,6 +55,7 @@
       <td th:text="${people.name}" />
       <td th:text="${people.sector}" />
       <td th:text="${people.age}" />
+      <td th:text="${people.salary}" />
       <td>
         <a th:href="@{/showUpdateForm(peopleId=${people.id})}" class="btn btn-info">Update</a>
         <a th:href="@{/deletePeople(peopleId=${people.id})}" class="btn btn-danger ml-2">Delete</a>

@@ -37,7 +37,11 @@ public class WebSecurityConfig {
                         .hasRole("ADMIN")
                         .requestMatchers("/showUpdateForm")
                         .hasRole("ADMIN")
-                        .requestMatchers("/deleteStudent")
+                        .requestMatchers("/deletePeople/**")
+                        .hasRole("ADMIN")
+                        .requestMatchers("/addPeopleFormFile")
+                        .hasRole("ADMIN")
+                        .requestMatchers("/deleteAll")
                         .hasRole("ADMIN")
                 )
                 .formLogin(form -> form

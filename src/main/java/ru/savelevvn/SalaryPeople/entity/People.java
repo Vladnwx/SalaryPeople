@@ -27,4 +27,13 @@ public class People {
 
     @Column(name = "age")
     private Integer age;
+
+    @Column(name = "salary")
+    private Integer salary;
+
+    public People(Long id, String name, String surname) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+    }
 }

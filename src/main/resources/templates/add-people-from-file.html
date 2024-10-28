@@ -19,9 +19,9 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/index}">Home</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/register}">Register</a>
                 </li>
@@ -31,15 +31,14 @@
 </nav>
 <div class="container">
     <hr/>
-    <h3>Add New People</h3>
+    <h3>Add New People from FILE</h3>
     <hr/>
     <form th:action="@{/savePeople}" th:object="${people}" method="POST">
         <input type="text" th:field="*{name}" class="form-control col-4 mb-4" placeholder="Enter Name"/>
         <input type="text" th:field="*{surname}" class="form-control col-4 mb-4" placeholder="Enter Surname"/>
         <input type="text" th:field="*{sector}" class="form-control col-4 mb-4" placeholder="Enter Sector"/>
         <input type="text" th:field="*{age}" class="form-control col-4 mb-4" placeholder="Enter Age"/>
-        <input type="text" th:field="*{salary}" class="form-control col-4 mb-4" placeholder="Enter Salary"/>
-        <button type="submit" class="btn btn-primary col-2">Save</button>
+        <button type="submit" class="btn btn-primary col-2">Get</button>
         <input type="hidden" th:field="*{id}"/>
     </form>
     <hr/>
