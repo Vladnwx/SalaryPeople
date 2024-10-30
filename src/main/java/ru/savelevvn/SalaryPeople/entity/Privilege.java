@@ -6,28 +6,30 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "privileges")
+public class Privilege {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = false, unique = true)
+
     private String name;
-    @ManyToMany(mappedBy = "roles")
-    private Collection<User> users;
-    @ManyToMany
-    @JoinTable(name = "roles_privileges", joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "privilege_id", referencedColumnName = "id"))
-    private Collection<Privilege> privileges;
+
+    @ManyToMany(mappedBy = "privileges")
+    private Collection<Role> roles;
+
+
+    public Privilege(final String name) {
+        super();
+        this.name = name;
+    }
 
     @Override
     public int hashCode() {
@@ -36,25 +38,26 @@ public class Role {
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         return result;
     }
+
     @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
+    public boolean equals(Object obj) {
+        if (this == obj)
             return true;
-        }
-        if (obj == null) {
+        if (obj == null)
             return false;
-        }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass())
             return false;
-        }
-        final Role role = (Role) obj;
-        return getName().equals(role.getName());
+        Privilege other = (Privilege) obj;
+        if (getName() == null) {
+            return other.getName() == null;
+        } else return getName().equals(other.getName());
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Role [name=")
+        builder
+                .append("Privilege [name=")
                 .append(name)
                 .append("]")
                 .append("[id=")

@@ -20,11 +20,7 @@ public class SecurityController {
     public SecurityController(UserService userService) {
         this.userService = userService;
     }
-    @GetMapping("/index")
-    public String home() {
-        log.info("Slf4j: " + this.getClass().getName() + " Method " + Thread.currentThread().getStackTrace()[1].getMethodName() + " executed");
-        return "index";
-    }
+
     @GetMapping("/login")
      String login() {
         log.info("Slf4j: " + this.getClass().getName() + " Method " + Thread.currentThread().getStackTrace()[1].getMethodName() + " executed");
