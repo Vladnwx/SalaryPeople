@@ -45,6 +45,7 @@ public class SecurityController {
         }
         if (bindingResult.hasErrors()) {
             model.addAttribute("user", userDto);
+            log.info("Slf4j: ERROR");
             return "/register";
         }
         userService.saveUser(userDto);

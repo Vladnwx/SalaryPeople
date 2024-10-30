@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Slf4j
 @Controller
-public class HomeController {
+public class IndexController {
 //    @GetMapping("/")
 //    public String home() {
 //        log.info("Slf4j: " + this.getClass().getName() + " Method " + Thread.currentThread().getStackTrace()[1].getMethodName() + " executed");

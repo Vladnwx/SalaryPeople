@@ -15,16 +15,21 @@
   <table class="table table-bordered table-hover">
     <thead class="table-dark">
     <tr>
+      <th>Email</th>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Email</th>
+      <th>passwordConfirm</th>
+      <th>enabled</th>
+      <th>isUsing2FA</th>
+      <th>secret</th>
+      <th>Role</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="user : ${users}">
+      <td th:text="${user.email}"></td>
       <td th:text="${user.firstName}"></td>
       <td th:text="${user.lastName}"></td>
-      <td th:text="${user.email}"></td>
     </tr>
     </tbody>
   </table>
