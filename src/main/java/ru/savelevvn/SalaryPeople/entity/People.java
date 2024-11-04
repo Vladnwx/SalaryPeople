@@ -35,6 +35,15 @@ public class People {
     )
     private Collection<Project> projects;
 
+    //Участок
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "people_source",
+            joinColumns = { @JoinColumn(name = "people_id", referencedColumnName =  "id")},
+            inverseJoinColumns = {@JoinColumn(name = "source_id", referencedColumnName =  "id")}
+    )
+    private Collection<Source> sources;
+
     @Column(name = "age")
     private Integer age;
 
@@ -47,23 +56,6 @@ public class People {
     @OneToOne(mappedBy = "people")
     private User user;
 
-
-
-//    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "people_foreman",
-//            joinColumns = { @JoinColumn(name = "people_id", referencedColumnName =  "id")},
-//            inverseJoinColumns = {@JoinColumn(name = "foreman_id", referencedColumnName =  "id")}
-//    )
-//    private Foreman foreman;
-//
-//    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "people_electrician",
-//            joinColumns = { @JoinColumn(name = "people_id", referencedColumnName =  "id")},
-//            inverseJoinColumns = {@JoinColumn(name = "electrician_id", referencedColumnName =  "id")}
-//    )
-//    private Electrician electrician;
 
     public People(Long id, String name, String surname) {
         this.id = id;

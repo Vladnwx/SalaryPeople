@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:insert="~{fragment/header :: header}"></div>
+</head>
+
+<body>
+<div th:insert="~{fragment/header :: navbar}"></div>
+<div class="container">
+    <hr/>
+    <h3>Add New Source</h3>
+    <hr/>
+    <form th:action="@{/source/save}" th:object="${source}" method="POST">
+        <input type="text" th:field="*{name}" class="form-control col-4 mb-4" placeholder="Enter Name"/>
+        <button type="submit" class="btn btn-primary col-2">Save</button>
+        <input type="hidden" th:field="*{id}"/>
+    </form>
+    <hr/>
+    <a th:href="@{/source/list}">Back to list</a>
+</div>
+</body>
+</html>
+

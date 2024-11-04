@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Collection;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,5 +24,8 @@ public class Source {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Project project;
+
+    @ManyToMany(mappedBy = "sources", fetch = FetchType.EAGER)
+    private Collection<People> peoples;
 
 }

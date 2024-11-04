@@ -9,25 +9,25 @@
 <div th:insert="~{fragment/header :: navbar}"></div>
 <div class="container">
   <hr/>
-  <a th:href="@{/project/addForm}" class="btn btn-primary">Add Project</a>
-  <a th:href="@{/project/deleteAll}" class="btn btn-primary">delete All Project</a>
+  <a th:href="@{/source/addForm}" class="btn btn-primary">Add Source</a>
+  <a th:href="@{/source/deleteAll}" class="btn btn-primary">delete All Source</a>
   <br/><br/>
-  <table class="table table-bordered table-striped" id="projectTable">
+  <table class="table table-bordered table-striped" id="sourceTable">
     <thead>
     <tr>
       <th>Name</th>
+      <th>Project</th>
       <th>Peoples</th>
-      <th>Sources</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="project: ${projects}">
-      <td th:text="${project.name}"></td>
-      <td th:text="${project.peoples}"></td>
-      <td th:text="${project.sources}"></td>
+    <tr th:each="source: ${sources}">
+      <td th:text="${source.name}"></td>
+      <td th:text="${source.project}"></td>
+      <td th:text="${source.peoples}"></td>
       <td>
-        <a th:href="@{/project/showUpdateForm(projectId=${project.id})}" class="btn btn-info">Update</a>
-        <a th:href="@{/project/delete(projectId=${project.id})}" class="btn btn-danger ml-2">Delete</a>
+        <a th:href="@{/source/showUpdateForm(sourceId=${source.id})}" class="btn btn-info">Update</a>
+        <a th:href="@{/source/delete(sourceId=${source.id})}" class="btn btn-danger ml-2">Delete</a>
       </td>
     </tr>
     </tbody>
@@ -38,7 +38,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
 <script>
   $(document).ready(function() {
-      $("#projectTable").DataTable({
+      $("#sourceTable").DataTable({
           'aoColumnDefs': [{
               'bSortable': false,
               'aTargets': [-1] /* 1st one, start by the right */
