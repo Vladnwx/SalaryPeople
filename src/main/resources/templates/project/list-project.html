@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <div th:insert="~{fragment/header :: header}"></div>
+</head>
+
+<body>
+<div th:insert="~{fragment/header :: navbar}"></div>
+<div class="container">
+  <hr/>
+  <a th:href="@{/project/addForm}" class="btn btn-primary">Add Project</a>
+  <a th:href="@{/project/deleteAll}" class="btn btn-primary">delete All Project</a>
+  <br/><br/>
+  <table class="table table-bordered table-striped" id="projectTable">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Peoples</th>
+      <th>Sources</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="project: ${projects}">
+      <td th:text="${project.name}"></td>
+      <td th:text="${project.peoples}"></td>
+      <td th:text="${project.sources}"></td>
+      <td>
+        <a th:href="@{/project/showUpdateForm(projectId=${project.id})}" class="btn btn-info">Update</a>
+        <a th:href="@{/project/delete(projectId=${project.id})}" class="btn btn-danger ml-2">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+<script>
+  $(document).ready(function() {
+      $("#peopleTable").DataTable({
+          'aoColumnDefs': [{
+              'bSortable': false,
+              'aTargets': [-1] /* 1st one, start by the right */
+          }]
+      });
+  })
+</script>
+</body></html>

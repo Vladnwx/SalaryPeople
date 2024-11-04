@@ -19,18 +19,24 @@
     <tr>
       <th>Name</th>
       <th>Surname</th>
+      <th>Project</th>
       <th>Sector</th>
       <th>Age</th>
       <th>Salary</th>
+      <th>Position</th>
+      <th>User</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="people: ${peoples}">
-      <td th:text="${people.surname}" />
-      <td th:text="${people.name}" />
-      <td th:text="${people.sector}" />
-      <td th:text="${people.age}" />
-      <td th:text="${people.salary}" />
+      <td th:text="${people.surname}"></td>
+      <td th:text="${people.name}"></td>
+      <td th:text="${people.projects}"></td>
+      <td th:text="${people.sectors}"></td>
+      <td th:text="${people.age}"></td>
+      <td th:text="${people.salary}"></td>
+      <td th:text="${people.position}"></td>
+      <td th:text="${people.user}"></td>
       <td>
         <a th:href="@{/showUpdateForm(peopleId=${people.id})}" class="btn btn-info">Update</a>
         <a th:href="@{/deletePeople(peopleId=${people.id})}" class="btn btn-danger ml-2">Delete</a>

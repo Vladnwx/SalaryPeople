@@ -21,8 +21,8 @@
       <th>passwordConfirm</th>
       <th>enabled</th>
       <th>isUsing2FA</th>
-      <th>secret</th>
       <th>Role</th>
+      <th>EDIT</th>
     </tr>
     </thead>
     <tbody>
@@ -30,6 +30,11 @@
       <td th:text="${user.email}"></td>
       <td th:text="${user.firstName}"></td>
       <td th:text="${user.lastName}"></td>
+      <td th:text="${user.passwordConfirm}"></td>
+      <td th:text="${user.enabled}"></td>
+      <td th:text="${user.isUsing2FA}"></td>
+      <td th:text="${user.roles}"></td>
+      <td><button class="btn btn-primary" type="submit">EDIT</button></td>
     </tr>
     </tbody>
   </table>

@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -29,7 +32,7 @@ public class User {
     @Size(min=5, message = "Не меньше 5 знаков")
     private String password;
     @Transient
-    private String passwordConfirm;
+    private String passwordConfirm = "NO";
     private boolean enabled;
     private boolean isUsing2FA;
     private String secret;
@@ -40,6 +43,15 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName =  "id")}
     )
     private Collection<Role> roles;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_people",
+            joinColumns = { @JoinColumn(name = "user_id", referencedColumnName =  "id")},
+            inverseJoinColumns = {@JoinColumn(name = "people_id", referencedColumnName =  "id")}
+    )
+    private People people;
+
 
     public User() {
         super();
@@ -89,6 +101,5 @@ public class User {
                 .append("]");
         return builder.toString();
     }
-
 
 }

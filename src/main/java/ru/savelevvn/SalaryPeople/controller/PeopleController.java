@@ -3,18 +3,17 @@ package ru.savelevvn.SalaryPeople.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.savelevvn.SalaryPeople.HTMLParser.HTMLParser;
 import ru.savelevvn.SalaryPeople.entity.People;
+import ru.savelevvn.SalaryPeople.entity.Position;
 import ru.savelevvn.SalaryPeople.repository.PeopleRepository;
 
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 @Slf4j
@@ -36,6 +35,8 @@ public class PeopleController {
         ModelAndView modelAndView = new ModelAndView("add-people-form");
         People people = new People();
         modelAndView.addObject("people", people);
+        List<Position> positions = Arrays.stream(Position.values()).toList();
+        modelAndView.addObject("positions", positions);
         return modelAndView;
     }
     @PostMapping("/savePeople")
@@ -52,6 +53,8 @@ public class PeopleController {
             people = optionalPeople.get();
         }
         modelAndView.addObject("people", people);
+        List<Position> positions = Arrays.stream(Position.values()).toList();
+        modelAndView.addObject("positions", positions);
         return modelAndView;
     }
     @GetMapping("/deletePeople")
@@ -83,6 +86,5 @@ public class PeopleController {
        // return modelAndView;
         return "redirect:/list";
     }
-
 
 }

@@ -56,6 +56,11 @@ public class UserServiceImpl implements UserService {
         userDto.setFirstName(str[0]);
         userDto.setLastName(str[1]);
         userDto.setEmail(user.getEmail());
+        userDto.setPasswordConfirm(user.getPasswordConfirm());
+        userDto.setEnabled(user.isEnabled());
+        userDto.setUsing2FA(user.isUsing2FA());
+        userDto.setSecret(user.getSecret());
+        userDto.setRoles(user.getRoles());
         return userDto;
     }
     private Role checkRoleExist() {
